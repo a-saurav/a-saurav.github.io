@@ -63,7 +63,7 @@
     .container { max-width: 1080px; margin: 0 auto; padding: 0 18px; }
 
     header {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      position: sticky; z-index: 1000;
       backdrop-filter: saturate(160%) blur(10px);
       background: color-mix(in oklab, var(--bg) 80%, transparent);
       border-bottom: 1px solid color-mix(in oklab, var(--muted) 25%, transparent);
@@ -78,7 +78,7 @@
 
     .hero { padding: 70px 0 30px; }
     .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
-    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--accent); font-size: 12px; font-weight: 500; letter-spacing: 0.3px; }
+    .badge{display:inline-flex!important;align-items:center!important;gap:8px!important;padding:8px 16px!important;border-radius:999px!important;font-size:14px!important;line-height:1.15!important;letter-spacing:.2px!important;background:color-mix(in oklab,var(--bg-soft) 60%,transparent)!important;border:1px solid color-mix(in oklab,var(--accent) 35%,transparent)!important;color:var(--text)!important;backdrop-filter:blur(4px) saturate(140%)!important;}
     .title { font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 14px 0; letter-spacing: .3px; }
     .subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
     .cta { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -87,7 +87,7 @@
     .kp-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
     .kp { font-size: 13px; color: var(--muted); }
 
-    section { padding: 40px 0; scroll-margin-top: 90px;}
+    section { padding: 40px 0;}
     .section-title { font-size: 22px; margin: 0 0 18px 0; letter-spacing: .2px; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -224,6 +224,16 @@
       <div style="font-size:12px;color:var(--muted);">Print this page to get a one-page PDF CV.</div>
     </div>
   </footer>
+  
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  if (header) {
+    const height = header.offsetHeight + 20; // +20px breathing room
+    document.documentElement.style.setProperty("--header-offset", height + "px");
+  }
+});
+</script>
 
   <script>
     const SITE_DATA = {
