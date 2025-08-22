@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Automation Developer Portfolio</title>
-  <meta name="description" content="Automation Developer portfolio: skills, certifications, experience, and contact." />
+  <title>A Saurav</title>
+  <meta name="description" content="A Saurav portfolio: experience, skills, certifications, and contact." />
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -46,6 +46,8 @@
 
     * { box-sizing: border-box; }
     html, body { height: 100%; }
+	html{ scroll-padding-top: var(--header-h, 96px); } /* default if JS didn’t run */
+	html{scroll-behavior:smooth;}
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -62,12 +64,10 @@
 
     .container { max-width: 1080px; margin: 0 auto; padding: 0 18px; }
 
-    header {
-      position: sticky; z-index: 1000;
-      backdrop-filter: saturate(160%) blur(10px);
-      background: color-mix(in oklab, var(--bg) 80%, transparent);
-      border-bottom: 1px solid color-mix(in oklab, var(--muted) 25%, transparent);
-    }
+    header{position:fixed;top:0;left:0;width:100%;z-index:1000;-webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px);background:rgba(11,18,32,0.85);border-bottom:1px solid color-mix(in oklab,var(--muted) 25%,transparent);} 
+	:root{--header-h:80px;} html{scroll-padding-top:calc(var(--header-h) + 81px);scroll-behavior:smooth;}
+	html{scroll-padding-top:calc(var(--header-h) + 10px);} 
+	main,.hero,section{padding-top:calc(var(--header-h) + 20px);} 
     .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
     .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
     .brand-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: var(--shadow); object-fit: cover; }
@@ -76,9 +76,11 @@
     .btn.alt { background: transparent; border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); color: var(--text); }
     .btn:focus { outline: none; box-shadow: 0 0 0 6px var(--ring); }
 
-    .hero { padding: 70px 0 30px; }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
-    .badge{display:inline-flex!important;align-items:center!important;gap:8px!important;padding:8px 16px!important;border-radius:999px!important;font-size:14px!important;line-height:1.15!important;letter-spacing:.2px!important;background:color-mix(in oklab,var(--bg-soft) 60%,transparent)!important;border:1px solid color-mix(in oklab,var(--accent) 35%,transparent)!important;color:var(--text)!important;backdrop-filter:blur(4px) saturate(140%)!important;}
+    /* .hero{ padding-top: calc(var(--header-h) + var(--hero-gap)); }  /* clear header nicely */ */
+    /* .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; } */
+	.hero{padding-top:calc(var(--header-h) + var(--hero-gap));} 
+	.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;margin-top:20px;margin-bottom:20px;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:var(--accent);font-weight:500;white-space:nowrap;}
+	.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;} 
     .title { font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 14px 0; letter-spacing: .3px; }
     .subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
     .cta { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
@@ -235,12 +237,43 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+(function(){
+  const header = document.querySelector('header');
+  const badge  = document.querySelector('.badge');
+  const title  = document.getElementById('headline');
+
+  function updateHeaderH(){
+    const h = header ? header.offsetHeight : 96;
+    document.documentElement.style.setProperty('--header-h', h+'px');
+  }
+
+  function centerBadge(){
+    if(!header || !badge || !title) return;
+    // distance from header bottom to H1 top in the document
+    const headerBottom = header.getBoundingClientRect().bottom + window.scrollY;
+    const titleTop     = title.getBoundingClientRect().top    + window.scrollY;
+    const gap          = Math.max(0, titleTop - headerBottom);
+    const badgeH       = badge.offsetHeight || 0;
+    // place the badge in the middle of that gap (with a small floor)
+    const mt = Math.max(8, Math.round((gap - badgeH)/2));
+    badge.style.marginTop = mt + 'px';
+  }
+
+  const run = () => { updateHeaderH(); centerBadge(); };
+  window.addEventListener('load', run);
+  window.addEventListener('resize', run);
+  // if fonts load later and change sizes
+  document.fonts && document.fonts.addEventListener('loadingdone', run);
+})();
+</script>
+
   <script>
     const SITE_DATA = {
       name: "A Saurav",
       role: "Automation Developer",
       avatar: "https://api.dicebear.com/7.x/initials/svg?seed=AS",
-      badge: "🚀 Automation Developer• 6+ Years",
+      badge: "🚀 Automation Developer • 6+ Years",
       headline: "I deliver high-quality and reliable products through proactive quality engineering.",
       subheadline: "Specializing in UI/API automation, performance testing, and CI/CD integration.",
       email: "mailto:srv.work@outlook.com",
@@ -263,10 +296,10 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       certifications: ["HashiCorp Certified: Terraform Associate (003)"],
       education: [
-        { course: "Bachelor of Engineering (Computer Science)" ,college: "Rungta College of Engineering and Technology, Bhilai", period: "2013 — 2015"},
+        { course: "Bachelor of Engineering (Computer Science)" ,college: "Rungta College of Engineering and Technology, Bhilai", period: "2013 — 2017"},
         { course: "Higher Secondary (Mathematics)", college: "Kendriya Vidyalaya, Kusmunda", period: "2012 — 2013" },
       ],
-      achievements: ["Circle of Excellence 2025"],
+      achievements: ["HSBC Circle of Excellence 2025","HSBC Circle of Excellence 2024"],
       theme: "ocean"
     };
 
