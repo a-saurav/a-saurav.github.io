@@ -1,464 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A Saurav</title>
-  <meta name="description" content="A Saurav portfolio: experience, skills, certifications, and contact." />
-  <meta name="theme-color" content="#0ea5e9"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0b1220;
-            --bg-soft: #0f172a;
-            --card: #111827;
-            --text: #e5e7eb;
-            --muted: #94a3b8;
-            --accent: #22d3ee;
-            --accent-2: #a78bfa;
-            --ring: rgba(34,211,238,.35);
-            --shadow: 0 10px 30px rgba(2, 6, 23, 0.7);
-            --radius: 16px;
-        }
-        .theme--ocean { }
-        .theme--plum {
-            --bg: #120814;
-            --bg-soft: #1a0b1d;
-            --card: #1e1022;
-            --text: #f3e8ff;
-            --muted: #c4b5fd;
-            --accent: #f472b6;
-            --accent-2: #60a5fa;
-            --ring: rgba(244,114,182,.35);
-        }
-        .theme--light {
-            --bg: #f8fafc;
-            --bg-soft: #ffffff;
-            --card: #ffffff;
-            --text: #0f172a;
-            --muted: #475569;
-            --accent: #0ea5e9;
-            --accent-2: #22c55e;
-            --ring: rgba(14,165,233,.35);
-            --shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
-        }
-
-        * { box-sizing: border-box; }
-        html, body { height: 100%; }
-        html{ scroll-padding-top: var(--header-h, 96px); }
-        html{scroll-behavior:smooth;}
-        body {
-            margin: 0;
-            font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-            background: radial-gradient(1200px 600px at 10% 0%, rgba(34,211,238,.12), transparent 60%),
-                        radial-gradient(1200px 600px at 90% 10%, rgba(167,139,250,.15), transparent 60%),
-                        var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .container { max-width: 1080px; margin: 0 auto; padding: 0 18px; }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            -webkit-backdrop-filter: saturate(160%) blur(10px);
-            backdrop-filter: saturate(160%) blur(10px);
-            background: rgba(11,18,32,0.85);
-            border-bottom: 1px solid color-mix(in oklab,var(--muted) 25%,transparent);
-            padding: 10px 0;
-        }
-
-        :root {
-            --header-h: 80px;
-        }
-
-        main, .hero, section {
-            padding-top: calc(var(--header-h) + 5px);
-        }
-
-        .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-        .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: .2px; }
-        .brand-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: var(--shadow); object-fit: cover; }
-        .nav ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
-        .btn { padding: 10px 14px; border-radius: 999px; background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: white; border: none; cursor: pointer; box-shadow: var(--shadow); font-weight: 600; }
-        .btn.alt { background: transparent; border: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); color: var(--text); }
-        .btn:focus { outline: none; box-shadow: 0 0 0 6px var(--ring); }
-
-        .hero { padding-top: calc(var(--header-h) + 10px); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; margin-top: 10px; margin-bottom: 20px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: var(--accent); font-weight: 500; white-space: nowrap; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; }
-
-        .title { font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 14px 0; letter-spacing: .3px; }
-        .subtitle { font-size: clamp(16px, 2.2vw, 20px); color: var(--muted); }
-        .cta { margin-top: 18px; margin-bottom: 18px; display: flex; gap: 12px; flex-wrap: wrap; } 
-
-		.card { background: linear-gradient(180deg, color-mix(in oklab, var(--card) 86%, transparent), color-mix(in oklab, var(--bg-soft) 70%, transparent)); border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; margin-top: 0; } 
-		.kp-list { display: flex; flex-direction: column; gap: 8px; }
-        .kp { font-size: 13px; color: var(--muted); }
-
-        section { padding: 20px 0; } #experience, #skills, #certs, #education, #contact { margin-top: 20px; padding-top: 0; }
-        .section-title { font-size: 22px; margin: 0 0 18px 0; letter-spacing: .2px; }
-
-        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-        .chip { padding: 6px 10px; background: color-mix(in oklab, var(--card) 70%, transparent); border: 1px solid color-mix(in oklab, var(--muted) 25%, transparent); border-radius: 999px; font-size: 13px; color: var(--text); }
-
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .grid .card h3 { margin: 0 0 8px 0; font-size: 18px; }
-        .grid .card p { margin: 0; font-size: 14px; color: var(--muted); }
-        .grid .meta { margin-top: 10px; font-size: 12px; color: var(--muted); }
-
-        .timeline { position: relative; margin-left: 10px; }
-        .timeline:before { content:""; position:absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: color-mix(in oklab, var(--accent) 25%, var(--muted)); }
-        .tl-item { position: relative; padding-left: 32px; margin-bottom: 16px; }
-        .tl-item:before { content:""; position:absolute; left: 4px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(120deg, var(--accent), var(--accent-2)); box-shadow: 0 0 0 6px var(--ring); }
-        .tl-item h3 { margin: 0; font-size: 16px; }
-        .tl-item .h4 { margin: 0; font-size: 14.5px; color: var(--muted); }
-        .tl-item .when { color: var(--muted); font-size: 13px; }
-
-        footer { padding: 32px 0 60px; color: var(--muted); }
-
-        .row { display: flex; gap: 12px; flex-wrap: wrap; }
-        .hidden { display: none !important; }
-
-        /* Mobile Menu Styles */
-        .menu { display: none; flex-direction: column; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 9999; padding: 20px; }
-        .menu.active { display: flex; }
-        .menu ul { list-style: none; padding: 0; text-align: center; }
-        .menu ul li { margin: 20px 0; font-size: 24px; color: var(--accent); }
-        .menu button { background: none; color: white; font-size: 30px; position: absolute; top: 20px; right: 20px; border: none; cursor: pointer; }
-
-        @media (max-width: 980px) {
-          .hero-grid { grid-template-columns: 1fr; }
-          .grid { grid-template-columns: 1fr 1fr; }
-          .kp-list { grid-template-columns: 1fr 1fr 1fr; }
-        }
-
-        /* ===== Mobile (<=640px) tweaks requested ===== */
-        @media (max-width: 640px) {
-          /* 1) Non edge-to-edge feel via container padding (header/main/footer share it) */
-          .container { padding-left: 16px; padding-right: 16px; }
-
-          /* Keep content stacked single column as before */
-          .grid { grid-template-columns: 1fr; }
-          .kp-list { grid-template-columns: 1fr 1fr; }
-
-          /* Hide full nav on mobile (we use the overlay menu instead) */
-          .nav ul, nav { display: none; }
-
-          /* Show menu toggle on mobile */
-          #menuToggle { display: block; }
-
-          /* 2) Reorder header elements:
-                 - brand (avatar + name) on the left
-                 - theme button just left of menu
-                 - menu (☰) on the extreme right
-             Achieved with flex order + pushing the right-side controls using margin-left:auto.
-          */
-          .nav { justify-content: flex-start; gap: 8px; }
-          .brand { order: 1; }
-          .row { order: 2; margin-left: auto; display: flex; align-items: center; gap: 10px; }
-          #menuToggle { order: 3; }
-
-          /* Keep only Theme inside .row on mobile (Download stays hidden) */
-          .row { justify-content: flex-end; }
-          #downloadBtn { display: none; }
-		  
-		  .contact-actions {
-				justify-content: flex-start !important;
-		   }
-        }
-
-    </style>
-</head>
-<body class="theme--ocean">
-
-<header>
-    <div class="container nav">
-        <div class="brand">
-            <img class="brand-avatar" id="avatar" src="" alt="Avatar"/>
-            <span id="brandName"></span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#certs">Certifications</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button id="menuToggle" class="btn" style="display:none;">☰</button>
-        <div class="row">
-            <a class="btn" id="downloadBtn" href="#" onclick="window.print(); return false;">Download PDF</a>
-            <button class="btn alt theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">Theme</button>
-        </div>
-    </div>
-</header>
-
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="menu">
-    <button id="closeMenu">✖</button>
-    <ul>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certs">Certifications</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#" onclick="window.print(); return false;">Download PDF</a></li>
-    </ul>
-</div>
-
-<script>
-    // Check if the device is mobile or desktop using userAgent
-    function isMobileDevice() {
-        return /Mobi|android|ipad|iphone|ipod|windows phone/i.test(navigator.userAgent);
-    }
-
-    // Display menu button only on mobile
-    const menuToggle = document.getElementById('menuToggle');
-    if (isMobileDevice()) {
-        menuToggle.style.display = 'block';
-    }
-
-    // Toggle mobile menu
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling while the menu is active
-    });
-
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-    });
-
-    // Close menu when any section link is clicked
-    const menuLinks = document.querySelectorAll('.menu a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        });
-    });
-</script>
-
-<main class="container">
-    <section class="hero" id="home">
-        <div class="hero-grid">
-            <div>
-                <span class="badge" id="badge"></span>
-                <h1 class="title" id="headline"></h1>
-                <p class="subtitle" id="subheadline"></p>
-                <div class="cta">
-                    <a class="btn alt" id="secondaryCTA" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-                <div class="card" style="margin-top:14px;">
-                    <div class="kp-list">
+   <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <title>A Saurav</title>
+      <meta name="description" content="A Saurav portfolio: experience, skills, certifications, and contact."/>
+      <meta name="theme-color" content="#0ea5e9"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   </head>
+   <body class="theme--ocean">
+      <header>
+         <div class="container nav">
+            <div class="brand">
+               <img class="brand-avatar" id="avatar" src="" alt="Avatar"/>
+               <span id="brandName"></span>
+            </div>
+            <nav>
+               <ul>
+                  <li><a href="#experience">Experience</a></li>
+                  <li><a href="#skills">Skills</a></li>
+                  <li><a href="#certs">Certifications</a></li>
+                  <li><a href="#education">Education</a></li>
+                  <li><a href="#contact">Contact</a></li>
+               </ul>
+            </nav>
+            <button id="menuToggle" class="btn" style="display:none;">☰</button>
+            <div class="row">
+               <a class="btn" id="downloadBtn" href="#" onclick="downloadCV(event);">Download CV</a>
+               <button title="Change theme" class="btn alt theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"
+                  style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+               <i class="fa-solid fa-circle-half-stroke"></i>
+               </button>
+            </div>
+         </div>
+      </header>
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="menu">
+         <button id="closeMenu">✖</button>
+         <ul>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certs">Certifications</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="downloadCV(event);">Download CV</a></li>
+         </ul>
+      </div>
+      <main class="container">
+         <section class="hero" id="home">
+            <div class="hero-grid">
+               <div>
+                  <span class="badge" id="badge">
+                  <i class="fa-solid fa-laptop-code"></i>
+                  </span>
+                  <h1 class="title" id="headline"></h1>
+                  <p class="subtitle" id="subheadline"></p>
+                  <div class="card" style="margin-top:14px;">
+                     <div class="kp-list">
                         <div class="kp" id="kp1"></div>
                         <div class="kp" id="kp2"></div>
                         <div class="kp" id="kp3"></div>
-                    </div>
-                </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="card" id="coreCard">
+                  <h2 class="section-title">Core Stack</h2>
+                  <div class="chips" id="coreStack"></div>
+                  <h2 class="section-title" style="margin-top:16px;">Domains</h2>
+                  <div class="chips" id="domains"></div>
+               </div>
             </div>
+         </section>
+         <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline" id="expTimeline"></div>
+         </section>
+         <section id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="chips" id="skillsChips"></div>
+         </section>
+         <section id="certs">
+            <div class="grid">
+               <div class="card">
+                  <h2 class="section-title">Certifications</h2>
+                  <ul id="certList"></ul>
+               </div>
+               <div class="card">
+                  <h2 class="section-title">Achievements</h2>
+                  <ul id="achList"></ul>
+               </div>
+            </div>
+         </section>
+         <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline" id="educationTimeline"></div>
+         </section>
+         <section id="contact">
             <div class="card">
-                <h2 class="section-title">Core Stack</h2>
-                <div class="chips" id="coreStack"></div>
-                <h2 class="section-title" style="margin-top:16px;">Domains</h2>
-                <div class="chips" id="domains"></div>
+               <h2 class="section-title">Contact</h2>
+               <p id="contactSummary"></p>
+               <div class="row contact-actions">
+                  <a class="btn alt" id="emailBtn" style="display:flex;align-items:center;gap:6px;">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span id="emailText"></span>
+                  </a>
+                  <a class="btn alt" id="mobileBtn" style="display:flex;align-items:center;gap:6px;">
+                  <i class="fa-solid fa-phone"></i>
+                  <span id="mobileText"></span>
+                  </a>
+                  <a class="btn alt" id="linkedinBtn" target="_blank" style="display:flex;align-items:center;gap:6px;">
+                  <i class="fa-brands fa-linkedin"></i> LinkedIn
+                  </a>
+                  <a class="btn alt" id="cvBtn" href="#" onclick="downloadCV(event);">
+                  <i class="fa-solid fa-download"></i>
+                  <span id="cvText">Download CV</span>
+                  </a>
+               </div>
             </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline" id="expTimeline"></div>
-    </section>
-
-    <section id="skills">
-        <h2 class="section-title">Skills</h2>
-        <div class="chips" id="skillsChips"></div>
-    </section>
-
-    <section id="certs">
-        <div class="grid">
-            <div class="card">
-                <h2 class="section-title">Certifications</h2>
-                <ul id="certList"></ul>
-            </div>
-            <div class="card">
-                <h2 class="section-title">Achievements</h2>
-                <ul id="achList"></ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <h2 class="section-title">Education</h2>
-        <div class="timeline" id="educationTimeline"></div>
-    </section>
-
-    <section id="contact">
-        <div class="card">
-            <h2 class="section-title">Contact</h2>
-            <p id="contactSummary"></p>
-            <div class="row contact-actions">
-                <a class="btn" id="emailBtn">Email</a>
-                <a class="btn alt" id="resumeBtn" target="_blank" rel="noopener">PDF Resume</a>
-            </div>
-        </div>
-    </section>
-</main>
-
-
-<footer class="container">
-     <div class="row" style="justify-content:center; text-align:center; width:100%;">
-        <span id="footerNote">© <span id="year"></span> <span id="footerName"></span> — Built with vanilla HTML/CSS/JS</span>
-    </div>
-</footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const header = document.querySelector("header");
-      if (header) {
-        const height = header.offsetHeight + 20; // +20px breathing room
-        document.documentElement.style.setProperty("--header-offset", height + "px");
-      }
-    });
-</script>
-
-<script>
-    (function(){
-      const header = document.querySelector('header');
-      const badge  = document.querySelector('.badge');
-      const title  = document.getElementById('headline');
-
-      function updateHeaderH(){
-        const h = header ? header.offsetHeight : 96;
-        document.documentElement.style.setProperty('--header-h', h+'px');
-      }
-
-      function centerBadge(){
-        if(!header || !badge || !title) return;
-        const headerBottom = header.getBoundingClientRect().bottom + window.scrollY;
-        const titleTop     = title.getBoundingClientRect().top    + window.scrollY;
-        const gap          = Math.max(0, titleTop - headerBottom);
-        const badgeH       = badge.offsetHeight || 0;
-        const mt = Math.max(8, Math.round((gap - badgeH)/2));
-        badge.style.marginTop = mt + 'px';
-      }
-
-      const run = () => { updateHeaderH(); centerBadge(); };
-      window.addEventListener('load', run);
-      window.addEventListener('resize', run);
-      document.fonts && document.fonts.addEventListener('loadingdone', run);
-    })();
-</script>
-
-  <script>
-    const SITE_DATA = {
-      name: "A Saurav",
-      role: "Automation Developer",
-      avatar: "https://api.dicebear.com/7.x/initials/svg?seed=AS",
-      badge: "🚀 Automation Developer • 6+ Years",
-      headline: "I deliver high-quality and reliable products through proactive quality engineering.",
-      subheadline: "Specializing in UI/API automation, performance testing, and CI/CD integration.",
-      email: "mailto:srv.work@outlook.com",
-      linkedin: "https://www.linkedin.com/in/a-saurav/",
-      resumePdf: "#",
-      contactSummary: "Open to Automation / Quality roles.",
-      coreStack: ["Java", "Selenium", "REST Assured", "TestNG", "JUnit", "Cucumber", "Postman", "JMeter", "Git", "Jenkins"],
-      domains: ["BFSI", "E‑commerce"],
-      keyPoints: [
-        "🚀 50% faster regression cycles through optimized automation frameworks.",
-		"🤝 Proven individual contributor and team collaborator.",
-        "📊 Defect free products increasing end-user satisfaction."
-      ],
-      skills: ["Selenium", "Java", "Cucumber BDD", "Rest API / Rest Assured", "JMeter", "Xray", "Agile (Scrum)", "Jenkins", "Maven / Gradle", "TestNG / Junit", "JIRA", "Git / Bitbucket", "Postman / Insomnia", "Confluence", "GitHub Co-pilot", "Sql", "HashiCorp Terraform" ],
-      experience: [
-        { company: "HSBC" ,role: "Senior Software Engineer", period: "June 2024 — Present", bullets: ["Automated API testing for Spring Cloud Gateway migration from Netflix Zuul using Rest Assured, achieving 99% defect-freedeployment.","Led performance testing via JMeter for cloud infrastructure, improving system reliability and scalability by 40% and reducingresponse time by 35% and boosting throughput efficiency under high concurrency.","Enhanced test automation frameworks using GitHub Co-pilot, cutting regression testing time by 50% and ensuring seamless CI/CD pipeline integration."] },
-        { company: "Barclays" ,role: "Automation Developer", period: "April 2023 — May 2024", bullets: ["In project 1, worked in a team of 3 and in project 2, worked as an individual automation contributor.","Authored and managed test cases in Xray, aligning with functional and technical requirements.","Identified, reported, and tracked defects to resolution through JIRA, ensuring a smooth release process.","Performed functional API testing using Postman and Insomnia to validate service endpoints"] },
-        { company: "Publicis Sapient" ,role: "Quality Engineer L2", period: "Nov 2021 — April 2023", bullets: ["Developed Selenium-based UI automation scripts using Java (BDD framework).","In-charge of integrating, initiating and monitoring regression suite on Jenkins-like environment.","Created and maintained an automation knowledge base on Confluence to document best practices and improvements."] },
-		{ company: "TechSSB" ,role: "Associate Software Engineer", period: "July 2019 — Sept 2021", bullets: ["Utilized BDD framework with POM design pattern for automation.","Authored test cases using Selenium and Java.","Utilized JIRA for bug tracking & project management."] }
-      ],
-      certifications: ["HashiCorp Certified: Terraform Associate (003)"],
-      education: [
-        { course: "Bachelor of Engineering (Computer Science)" ,college: "Rungta College of Engineering and Technology, Bhilai", period: "2013 — 2017"},
-        { course: "Higher Secondary (Mathematics)", college: "Kendriya Vidyalaya, Kusmunda", period: "2012 — 2013" },
-      ],
-      achievements: ["HSBC Circle of Excellence 2025","HSBC Circle of Excellence 2024"],
-      theme: "ocean"
-    };
-
-    function setText(id, text) { const el = document.getElementById(id); if (el) el.textContent = text; }
-    function setHref(id, href) { const el = document.getElementById(id); if (el) el.href = href; }
-
-    function renderChips(id, items) { document.getElementById(id).innerHTML = items.map(i => `<span class="chip">${i}</span>`).join(''); }
-    function renderTimeline(list) { document.getElementById('expTimeline').innerHTML = list.map(e => 
-        `<div class="tl-item">
-            <h3>${e.company} | ${e.role}</h3>
-            <div class="when">${e.period}</div>
-            <ul>${e.bullets.map(b => `<li>${b}</li>`).join('')}</ul>
-        </div>` ).join(''); }
-    function renderEducationTimeline(list) { 
-        document.getElementById('educationTimeline').innerHTML = list.map(e => 
-            `<div class="tl-item">
-                <h3>${e.course}</h3>
-                <div class="h4">${e.college}</div>
-                <div class="when">${e.period}</div>
-            </div>` ).join(''); }
-
-    function renderList(id, items) { 
-        document.getElementById(id).innerHTML = items.map(i => `<li>${i}</li>`).join(''); }
-
-    (function init() {
-        setText('brandName', SITE_DATA.name);
-        document.title = `${SITE_DATA.role} – ${SITE_DATA.name}`;
-        document.getElementById('avatar').src = SITE_DATA.avatar;
-        setText('badge', SITE_DATA.badge);
-        setText('headline', SITE_DATA.headline);
-        setText('subheadline', SITE_DATA.subheadline);
-        setHref('primaryCTA', SITE_DATA.github);
-        setHref('secondaryCTA', SITE_DATA.linkedin);
-        setHref('resumeBtn', SITE_DATA.resumePdf || '#');
-        const emailBtn = document.getElementById('emailBtn');
-        emailBtn.href = SITE_DATA.email;
-        emailBtn.textContent = SITE_DATA.email.startsWith('mailto:') ? SITE_DATA.email.replace('mailto:','Email: ') : 'Email';
-        setText('contactSummary', SITE_DATA.contactSummary);
-
-        document.getElementById('kp1').textContent = SITE_DATA.keyPoints[0];
-        document.getElementById('kp2').textContent = SITE_DATA.keyPoints[1];
-        document.getElementById('kp3').textContent = SITE_DATA.keyPoints[2];
-
-        renderChips('coreStack', SITE_DATA.coreStack);
-        renderChips('domains', SITE_DATA.domains);
-        renderChips('skillsChips', SITE_DATA.skills);
-        renderTimeline(SITE_DATA.experience);
-        renderEducationTimeline(SITE_DATA.education);
-        renderList('certList', SITE_DATA.certifications);
-        renderList('achList', SITE_DATA.achievements);
-
-        setText('footerName', SITE_DATA.name);
-        document.getElementById('year').textContent = new Date().getFullYear();
-        document.body.className = `theme--${SITE_DATA.theme}`;
-    })();
-
-    function toggleTheme() {
-        const themes = ["ocean", "plum", "light"];
-        let current = themes.indexOf(SITE_DATA.theme);
-        SITE_DATA.theme = themes[(current + 1) % themes.length];
-        document.body.className = `theme--${SITE_DATA.theme}`;
-    }
-</script>
-</body>
+         </section>
+      </main>
+      <footer class="container">
+         <div class="row" style="justify-content:center; text-align:center; width:100%;">
+            <span id="footerNote">Copyright © <span id="year"></span> <span id="footerName"></span></span>
+         </div>
+      </footer>
+      <script src="js/scripts.js"></script>
+   </body>
 </html>
