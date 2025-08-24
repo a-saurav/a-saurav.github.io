@@ -1,131 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <title>A Saurav</title>
-      <meta name="description" content="A Saurav portfolio: experience, skills, certifications, and contact."/>
-      <meta name="theme-color" content="#0ea5e9"/>
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link rel="stylesheet" href="css/style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-   </head>
-   <body class="theme--ocean">
-      <header>
-         <div class="container nav">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A Saurav</title>
+    <meta name="description" content="A Saurav portfolio: experience, skills, certifications, and contact."/>
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="theme--ocean">
+    <header>
+        <div class="container nav">
             <div class="brand">
-               <img class="brand-avatar" id="avatar" src="" alt="Avatar"/>
-               <span id="brandName"></span>
+                <img class="brand-avatar" id="avatar" src="" alt="Avatar" />
+                <span id="brandName"></span>
             </div>
             <nav>
-               <ul>
-                  <li><a href="#experience">Experience</a></li>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#certs">Certifications</a></li>
-                  <li><a href="#education">Education</a></li>
-                  <li><a href="#contact">Contact</a></li>
-               </ul>
+                <ul>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#certs">Certifications</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
             <button id="menuToggle" class="btn" style="display:none;">☰</button>
             <div class="row">
-               <a class="btn" id="downloadBtn" href="#" onclick="downloadCV(event);">Download CV</a>
-               <button title="Change theme" class="btn alt theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"
-                  style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-               <i class="fa-solid fa-circle-half-stroke"></i>
-               </button>
+                <a class="btn" id="downloadBtn" href="#" onclick="downloadCV(event);">Download CV</a>
+                <button title="Change theme" class="btn alt theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                </button>
             </div>
-         </div>
-      </header>
-      <!-- Mobile Menu -->
-      <div id="mobileMenu" class="menu">
-         <button id="closeMenu">✖</button>
-         <ul>
+        </div>
+    </header>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="menu">
+        <button id="closeMenu">✖</button>
+        <ul>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#certs">Certifications</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#contact">Contact</a></li>
             <li><a href="#" onclick="downloadCV(event);">Download CV</a></li>
-         </ul>
-      </div>
-      <main class="container">
-         <section class="hero" id="home">
+        </ul>
+    </div>
+    <main class="container">
+        <section class="hero" id="home">
             <div class="hero-grid">
-               <div>
-                  <span class="badge" id="badge">
-                  <i class="fa-solid fa-laptop-code"></i>
-                  </span>
-                  <h1 class="title" id="headline"></h1>
-                  <p class="subtitle" id="subheadline"></p>
-                  <div class="card" style="margin-top:14px;">
-                     <div class="kp-list">
-                        <div class="kp" id="kp1"></div>
-                        <div class="kp" id="kp2"></div>
-                        <div class="kp" id="kp3"></div>
-                     </div>
-                  </div>
-               </div>
-               <div class="card" id="coreCard">
-                  <h2 class="section-title">Core Stack</h2>
-                  <div class="chips" id="coreStack"></div>
-                  <h2 class="section-title" style="margin-top:16px;">Domains</h2>
-                  <div class="chips" id="domains"></div>
-               </div>
+                <div>
+                    <span class="badge" id="badge">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </span>
+                    <h1 class="title" id="headline"></h1>
+                    <p class="subtitle" id="subheadline"></p>
+                    <div class="card" style="margin-top:14px;">
+                        <div class="kp-list">
+                            <div class="kp" id="kp1"></div>
+                            <div class="kp" id="kp2"></div>
+                            <div class="kp" id="kp3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="coreCard">
+                    <h2 class="section-title">Core Stack</h2>
+                    <div class="chips" id="coreStack"></div>
+                    <h2 class="section-title" style="margin-top:16px;">Domains</h2>
+                    <div class="chips" id="domains"></div>
+                </div>
             </div>
-         </section>
-         <section id="experience">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline" id="expTimeline"></div>
-         </section>
-         <section id="skills">
-            <h2 class="section-title">Skills</h2>
-            <div class="chips" id="skillsChips"></div>
-         </section>
-         <section id="certs">
-            <div class="grid">
-               <div class="card">
-                  <h2 class="section-title">Certifications</h2>
-                  <ul id="certList"></ul>
-               </div>
-               <div class="card">
-                  <h2 class="section-title">Achievements</h2>
-                  <ul id="achList"></ul>
-               </div>
-            </div>
-         </section>
-         <section id="education">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline" id="educationTimeline"></div>
-         </section>
-         <section id="contact">
+        </section>
+        <section id="experience">
             <div class="card">
-               <h2 class="section-title">Contact</h2>
-               <p id="contactSummary"></p>
-               <div class="row contact-actions">
-                  <a class="btn alt" id="emailBtn" style="display:flex;align-items:center;gap:6px;">
-                  <i class="fa-solid fa-envelope"></i>
-                  <span id="emailText"></span>
-                  </a>
-                  <a class="btn alt" id="mobileBtn" style="display:flex;align-items:center;gap:6px;">
-                  <i class="fa-solid fa-phone"></i>
-                  <span id="mobileText"></span>
-                  </a>
-                  <a class="btn alt" id="linkedinBtn" target="_blank" style="display:flex;align-items:center;gap:6px;">
-                  <i class="fa-brands fa-linkedin"></i> LinkedIn
-                  </a>
-                  <a class="btn alt" id="cvBtn" href="#" onclick="downloadCV(event);">
-                  <i class="fa-solid fa-download"></i>
-                  <span id="cvText">Download CV</span>
-                  </a>
-               </div>
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline" id="expTimeline"></div>
             </div>
-         </section>
-      </main>
-      <footer class="container">
-         <div class="row" style="justify-content:center; text-align:center; width:100%;">
+        </section>
+
+        <section id="skills">
+            <div class="card">
+                <h2 class="section-title">Skills</h2>
+                <div class="chips" id="skillsChips"></div>
+            </div>
+        </section>
+        <section id="certs">
+            <div class="grid">
+                <div class="card">
+                    <h2 class="section-title">Certifications</h2>
+                    <ul id="certList"></ul>
+                </div>
+                <div class="card">
+                    <h2 class="section-title">Achievements</h2>
+                    <ul id="achList"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="card">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline" id="educationTimeline"></div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="card">
+                <h2 class="section-title">Contact</h2>
+                <p id="contactSummary"></p>
+                <div class="row contact-actions">
+                    <a class="btn alt" id="emailBtn" style="display:flex;align-items:center;gap:6px;">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span id="emailText"></span>
+                    </a>
+                    <a class="btn alt" id="mobileBtn" style="display:flex;align-items:center;gap:6px;">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="mobileText"></span>
+                    </a>
+                    <a class="btn alt" id="linkedinBtn" target="_blank" style="display:flex;align-items:center;gap:6px;">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a class="btn alt" id="cvBtn" href="#" onclick="downloadCV(event);">
+                        <i class="fa-solid fa-download"></i>
+                        <span id="cvText">Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container">
+        <div class="row" style="justify-content:center; text-align:center; width:100%;">
             <span id="footerNote">Copyright © <span id="year"></span> <span id="footerName"></span></span>
-         </div>
-      </footer>
-      <script src="js/scripts.js"></script>
-   </body>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
 </html>

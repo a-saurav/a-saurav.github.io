@@ -227,7 +227,7 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 22px 8px 22px;
+    padding: 8px 22px;
     margin-top: 12px;
     margin-bottom: 16px;
     border-radius: 999px;
@@ -235,11 +235,24 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: var(--accent);
     font-weight: 500;
-    white-space: nowrap;
+    max-width: 100%;
+    line-height: 1.4;
 }
 
-.badge i {
-    margin-left: -4px;
+.badge::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f5fc";
+    /* fa-laptop-code */
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Desktop: show as single line with dot */
+.badge-text::before {
+    content: attr(data-role) " • " attr(data-exp);
 }
 
 .hero-grid {
@@ -537,8 +550,8 @@ footer {
 
 @media (max-width: 640px) {
     .container {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 22px;
+        padding-right: 22px;
     }
 
     .grid {
@@ -597,5 +610,28 @@ footer {
         display: flex;
         gap: 12px;
         flex-wrap: wrap;
+    }
+
+    .hero .badge {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero .badge-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero .badge-text::before {
+        content: attr(data-role);
+    }
+
+    .hero .badge-text::after {
+        content: attr(data-exp);
     }
 }

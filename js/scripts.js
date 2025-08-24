@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector("header");
     if (header) {
-        const height = header.offsetHeight + 20; // +20px breathing room
+        const height = header.offsetHeight + 20;
         document.documentElement.style.setProperty("--header-offset", height + "px");
     }
 });
@@ -55,32 +55,58 @@ const SITE_DATA = {
     headline: "I deliver high-quality and reliable products through proactive quality engineering.",
     subheadline: "Specializing in UI/API automation, performance testing, and CI/CD integration.",
     email: "mailto:srv.work@outlook.com",
-	mobile: "+91 9039 226 554",
+    mobile: "+91 9039 226 554",
     linkedin: "https://www.linkedin.com/in/a-saurav/",
-    resumePdf: "#",
     contactSummary: "Open to Automation / Quality Engineering roles.",
     coreStack: ["Java", "Selenium", "REST Assured", "TestNG", "JUnit", "Cucumber", "Postman", "JMeter", "Git", "Jenkins"],
     domains: ["BFSI", "E‑commerce"],
     keyPoints: [
-      "🚀 50% faster regression cycles through optimized automation frameworks.",
-	  "🤝 Proven individual contributor and team collaborator.",
-      "📊 Defect free products increasing end-user satisfaction."
+        "🚀 50% faster regression cycles through optimized automation frameworks.",
+        "🤝 Proven individual contributor and team collaborator.",
+        "📊 Defect free products increasing end-user satisfaction."
     ],
-    skills: ["Selenium", "Java", "Cucumber BDD", "Rest API / Rest Assured", "JMeter", "Xray", "Agile (Scrum)", "Jenkins", "Maven / Gradle", "TestNG / Junit", "JIRA", "Git / Bitbucket", "Postman / Insomnia", "Confluence", "GitHub Co-pilot", "Sql", "HashiCorp Terraform" ],
-    experience: [
-      { company: "HSBC" ,role: "Senior Software Engineer", period: "June 2024 - Present", bullets: ["Automated API testing for Spring Cloud Gateway migration from Netflix Zuul using Rest Assured, achieving 99% defect-freedeployment.","Led performance testing via JMeter for cloud infrastructure, improving system reliability and scalability by 40% and reducingresponse time by 35% and boosting throughput efficiency under high concurrency.","Enhanced test automation frameworks using GitHub Co-pilot, cutting regression testing time by 50% and ensuring seamless CI/CD pipeline integration."] },
-      { company: "Barclays" ,role: "Automation Developer", period: "April 2023 - May 2024", bullets: ["In project 1, worked in a team of 3 and in project 2, worked as an individual automation contributor.","Authored and managed test cases in Xray, aligning with functional and technical requirements.","Identified, reported, and tracked defects to resolution through JIRA, ensuring a smooth release process.","Performed functional API testing using Postman and Insomnia to validate service endpoints"] },
-      { company: "Publicis Sapient" ,role: "Quality Engineer L2", period: "Nov 2021 - April 2023", bullets: ["Developed Selenium-based UI automation scripts using Java (BDD framework).","In-charge of integrating, initiating and monitoring regression suite on Jenkins-like environment.","Created and maintained an automation knowledge base on Confluence to document best practices and improvements."] },
-	  { company: "TechSSB" ,role: "Associate Software Engineer", period: "July 2019 - Sept 2021", bullets: ["Utilized BDD framework with POM design pattern for automation.","Authored test cases using Selenium and Java.","Utilized JIRA for bug tracking & project management."] }
+    skills: ["Selenium", "Java", "Cucumber BDD", "Rest API / Rest Assured", "JMeter", "Xray", "Agile (Scrum)", "Jenkins", "Maven / Gradle", "TestNG / Junit", "JIRA", "Git / Bitbucket", "Postman / Insomnia", "Confluence", "GitHub Co-pilot", "Sql", "HashiCorp Terraform"],
+    experience: [{
+            company: "HSBC",
+            role: "Senior Software Engineer",
+            period: "June 2024 - Present",
+            bullets: ["Automated API testing for Spring Cloud Gateway migration from Netflix Zuul using Rest Assured, achieving 99% defect-freedeployment.", "Led performance testing via JMeter for cloud infrastructure, improving system reliability and scalability by 40% and reducingresponse time by 35% and boosting throughput efficiency under high concurrency.", "Enhanced test automation frameworks using GitHub Co-pilot, cutting regression testing time by 50% and ensuring seamless CI/CD pipeline integration."]
+        },
+        {
+            company: "Barclays",
+            role: "Automation Developer",
+            period: "April 2023 - May 2024",
+            bullets: ["In project 1, worked in a team of 3 and in project 2, worked as an individual automation contributor.", "Authored and managed test cases in Xray, aligning with functional and technical requirements.", "Identified, reported, and tracked defects to resolution through JIRA, ensuring a smooth release process.", "Performed functional API testing using Postman and Insomnia to validate service endpoints"]
+        },
+        {
+            company: "Publicis Sapient",
+            role: "Quality Engineer L2",
+            period: "Nov 2021 - April 2023",
+            bullets: ["Developed Selenium-based UI automation scripts using Java (BDD framework).", "In-charge of integrating, initiating and monitoring regression suite on Jenkins-like environment.", "Created and maintained an automation knowledge base on Confluence to document best practices and improvements."]
+        },
+        {
+            company: "TechSSB",
+            role: "Associate Software Engineer",
+            period: "July 2019 - Sept 2021",
+            bullets: ["Utilized BDD framework with POM design pattern for automation.", "Authored test cases using Selenium and Java.", "Utilized JIRA for bug tracking & project management."]
+        }
     ],
     certifications: ["HashiCorp Certified: Terraform Associate (003)"],
-    education: [
-      { course: "Bachelor of Engineering (Computer Science)" ,college: "Rungta College of Engineering and Technology, Bhilai", period: "2013 - 2017"},
-      { course: "Higher Secondary (Mathematics)", college: "Kendriya Vidyalaya, Kusmunda", period: "2012 - 2013" },
+    education: [{
+            course: "Bachelor of Engineering (Computer Science)",
+            college: "Rungta College of Engineering and Technology, Bhilai",
+            period: "2013 - 2017"
+        },
+        {
+            course: "Higher Secondary (Mathematics)",
+            college: "Kendriya Vidyalaya, Kusmunda",
+            period: "2012 - 2013"
+        },
     ],
-    achievements: ["HSBC Circle of Excellence 2025","HSBC Circle of Excellence 2024"],
+    achievements: ["HSBC Circle of Excellence 2025", "HSBC Circle of Excellence 2024"],
     theme: "light"
 };
+
 function setText(id, text) {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -120,7 +146,9 @@ function renderList(id, items) {
 (function init() {
     setText('brandName', SITE_DATA.name);
     document.getElementById('avatar').src = SITE_DATA.avatar;
-    document.getElementById('badge').innerHTML = '<i class="fa-solid fa-laptop-code"></i> ' + SITE_DATA.badge;
+    const badgeEl = document.getElementById('badge');
+    const [role, exp] = SITE_DATA.badge.split('•').map(s => s.trim());
+    badgeEl.innerHTML = `<span class="badge-text" data-role="${role}" data-exp="${exp}"></span>`;
     setText('headline', SITE_DATA.headline);
     setText('subheadline', SITE_DATA.subheadline);
     setHref('primaryCTA', SITE_DATA.github);
@@ -199,12 +227,12 @@ menuLinks.forEach(link => {
 function downloadCV(event) {
     event.preventDefault();
     const link = document.createElement('a');
-    link.href = 'files/ASaurav_Automation_6.pdf';
-	if (isMobileDevice()) {
-		 // Trigger the download on mobile
-        link.download = 'ASaurav_Automation_6.pdf';
+    link.href = 'file/ASaurav_Automation_6.pdf';
+    if (isMobileDevice()) {
+        // Trigger the download on mobile
+        link.download = 'ASaurav_Automation_6.pdf'; // Optional: specify the filename
     } else {
-        // Open the resume in a new tab for desktop
+        // Open the cv in a new tab for desktop
         link.target = '_blank';
     }
     document.body.appendChild(link);
