@@ -70,7 +70,7 @@ const SITE_DATA = {
             company: "HSBC",
             role: "Senior Software Engineer",
             period: "June 2024 - Present",
-            bullets: ["Automated API testing for Spring Cloud Gateway migration from Netflix Zuul using Rest Assured, achieving 99% defect-freedeployment.", "Led performance testing via JMeter for cloud infrastructure, improving system reliability and scalability by 40% and reducingresponse time by 35% and boosting throughput efficiency under high concurrency.", "Enhanced test automation frameworks using GitHub Co-pilot, cutting regression testing time by 50% and ensuring seamless CI/CD pipeline integration."]
+            bullets: ["Automated API testing for Spring Cloud Gateway migration from Netflix Zuul using Rest Assured, achieving 99% defect-free deployment.", "Led performance testing via JMeter for cloud infrastructure, improving system reliability and scalability by 40% and reducing response time by 35% and boosting throughput efficiency under high concurrency.", "Enhanced test automation frameworks using GitHub Co-pilot, cutting regression testing time by 50% and ensuring seamless CI/CD pipeline integration."]
         },
         {
             company: "Barclays",
@@ -227,7 +227,7 @@ menuLinks.forEach(link => {
 function downloadCV(event) {
     event.preventDefault();
     const link = document.createElement('a');
-    link.href = 'file/ASaurav_Automation_6.pdf';
+    link.href = 'files/ASaurav_Automation_6.pdf';
     if (isMobileDevice()) {
         // Trigger the download on mobile
         link.download = 'ASaurav_Automation_6.pdf'; // Optional: specify the filename
@@ -239,3 +239,33 @@ function downloadCV(event) {
     link.click();
     document.body.removeChild(link);
 }
+
+document.querySelectorAll('a[data-target]').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const target = this.getAttribute('data-target');
+    const menu = document.querySelector('.menu');
+
+    // Close mobile menu if open
+    if (menu && menu.classList.contains('active')) {
+      menu.classList.remove('active');
+    }
+
+    // Scroll behavior
+    setTimeout(() => {
+      if (target === 'top') {
+        // Scroll to the very top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const element = document.getElementById(target);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80, // adjust for fixed header
+            behavior: 'smooth'
+          });
+        }
+      }
+    }, 200);
+  });
+});
