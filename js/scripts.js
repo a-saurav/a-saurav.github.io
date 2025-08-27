@@ -61,9 +61,9 @@ const SITE_DATA = {
     coreStack: ["Java", "Selenium", "REST Assured", "TestNG", "JUnit", "Cucumber", "Postman", "JMeter", "Git", "Jenkins"],
     domains: ["BFSI", "E‑commerce"],
     keyPoints: [
-        "🚀 50% faster regression cycles through optimized automation frameworks.",
-        "🤝 Proven individual contributor and team collaborator.",
-        "📊 Defect free products increasing end-user satisfaction."
+        "🚀 Developed and implemented exhaustive automation test suites, reducing regression testing efforts by more than 50 %.",
+        "🤝 Proven individual contributor and team collaborator, fostering a culture of learning and knowledge exchange.",
+        "📊 Delivered measurable improvements in customer satisfaction by ensuring near-zero defect releases."
     ],
     skills: ["Selenium", "Java", "Cucumber BDD", "Rest API / Rest Assured", "JMeter", "Xray", "Agile (Scrum)", "Jenkins", "Maven / Gradle", "TestNG / Junit", "JIRA", "Git / Bitbucket", "Postman / Insomnia", "Confluence", "GitHub Co-pilot", "Sql", "HashiCorp Terraform"],
     experience: [{

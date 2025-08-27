@@ -614,3 +614,14 @@ footer {
         content: attr(data-exp);
     }
 }
+
+/* Mobile menu content color overrides */
+.theme--light .menu ul li,
+.theme--light .menu ul li a {
+    color: #000 !important; /* Black for light theme */
+}
+
+.theme--ocean .menu ul li,
+.theme--ocean .menu ul li a {
+    color: #fff !important; /* White for ocean theme */
+}
